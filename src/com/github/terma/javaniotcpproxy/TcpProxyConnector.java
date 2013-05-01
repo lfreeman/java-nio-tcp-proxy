@@ -101,6 +101,11 @@ class TcpProxyConnector implements TcpServerHandler {
             serverChannel.configureBlocking(false);
 
             register();
+            
+            if (LOGGER.isLoggable(Level.INFO)){
+                LOGGER.log(Level.INFO, clientChannel.getRemoteAddress() + " " + clientChannel.getLocalAddress() + " " + serverChannel.getLocalAddress() + " " + serverChannel.getRemoteAddress());
+            }
+            
         } catch (final IOException exception) {
             destroy();
 
